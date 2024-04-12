@@ -1,12 +1,16 @@
 package com.mateudev.microserviceregister.mapper;
 
 import com.mateudev.microserviceregister.dto.OfferRequestDto;
+import com.mateudev.microserviceregister.dto.OfferResponseDto;
 import com.mateudev.microserviceregister.models.entitys.OfferEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface OfferMapper {
+
+    OfferMapper INSTANCE = Mappers.getMapper(OfferMapper.class);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "approved", ignore = true)
@@ -18,4 +22,11 @@ public interface OfferMapper {
     @Mapping(target = "userEntity.telephone", source = "telephone")
     @Mapping(target = "userEntity.income", source = "income")
     OfferEntity convertDtoToOfferEntity(OfferRequestDto offerRequestDto);
+
+    @Mapping(target = "name", source = "userEntity.name")
+    @Mapping(target = "lastName", source = "userEntity.lastName")
+    @Mapping(target = "cpf", source = "userEntity.cpf")
+    @Mapping(target = "telephone", source = "userEntity.telephone")
+    @Mapping(target = "income", source = "userEntity.income")
+    OfferResponseDto convertOfferEntityToDto(OfferEntity offerEntity);
 }

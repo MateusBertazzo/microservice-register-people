@@ -2,6 +2,8 @@ package com.mateudev.microserviceregister.services;
 
 import com.mateudev.microserviceregister.dto.OfferRequestDto;
 import com.mateudev.microserviceregister.dto.OfferResponseDto;
+import com.mateudev.microserviceregister.mapper.OfferMapper;
+import com.mateudev.microserviceregister.models.entitys.OfferEntity;
 import com.mateudev.microserviceregister.models.repositorys.OfferRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,10 @@ public class OfferService {
 
     public OfferResponseDto createOffer(OfferRequestDto offerRequestDto) {
 
-        return null;
+        OfferEntity offerEntity = OfferMapper.INSTANCE.convertDtoToOfferEntity(offerRequestDto);
+
+        offerRepository.save(offerEntity);
+
+        return OfferMapper.INSTANCE.convertOfferEntityToDto(offerEntity);
     }
 }
