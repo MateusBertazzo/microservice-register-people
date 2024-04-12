@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "offers")
 public class OfferEntity {
 
     @Id
@@ -14,6 +15,7 @@ public class OfferEntity {
     @Column(name = "requested_amount")
     private Double requestedAmount;
 
+    @Column(name = "payment_term")
     private Integer paymentTerm;
 
     private Boolean approved;
@@ -25,5 +27,4 @@ public class OfferEntity {
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
-
 }
