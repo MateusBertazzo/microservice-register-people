@@ -19,7 +19,10 @@ public class OfferController {
     private final OfferService offerService;
 
     @PostMapping
-    public ResponseEntity<OfferResponseDto> createOffer(@RequestBody OfferRequestDto offerRequestDto) {
-        return ResponseEntity.ok(offerService.createOffer(offerRequestDto));
+    public ResponseEntity<OfferResponseDto> createOffer(@RequestBody OfferRequestDto reequestDto) {
+
+        OfferResponseDto response = offerService.createOffer(reequestDto);
+
+        return ResponseEntity.ok(response);
     }
 }
