@@ -7,6 +7,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface OfferMapper {
 
@@ -29,4 +31,7 @@ public interface OfferMapper {
     @Mapping(target = "telephone", source = "userEntity.telephone")
     @Mapping(target = "income", source = "userEntity.income")
     OfferResponseDto convertOfferEntityToDto(OfferEntity offerEntity);
+
+
+    List<OfferResponseDto> convertListOfferToListDto(Iterable<OfferEntity> offerEntities);
 }

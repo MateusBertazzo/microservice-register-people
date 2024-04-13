@@ -8,6 +8,8 @@ import com.mateudev.microserviceregister.models.repositorys.OfferRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class OfferService {
@@ -21,5 +23,11 @@ public class OfferService {
         offerRepository.save(offerEntity);
 
         return OfferMapper.INSTANCE.convertOfferEntityToDto(offerEntity);
+    }
+
+    public List<OfferResponseDto> getOffer() {
+        Iterable<OfferEntity> allOffers = offerRepository.findAll();
+
+        return OfferMapper.INSTANCE.convertListOfferToListDto(allOffers);
     }
 }
