@@ -24,7 +24,7 @@ public class OfferResponseDto {
 
     private int paymentTerm;
 
-    private Double requestedAmount;
+    private String requestedAmountFormatted;
 
     private Boolean approved;
 
